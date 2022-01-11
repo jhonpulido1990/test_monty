@@ -23,8 +23,14 @@ int main(int argc, char **argv)
 	rewind(fileptr);
 
 	buffer = (char *)malloc(filelen * sizeof(char));
+	if (buffer == NULL)
+	{
+		return (NULL);
+	}
 	fread(buffer, filelen, 1, fileptr);
+	
 	printf("%s", buffer);
 	fclose(fileptr);
+	free(buffer);
 	return (0);
 }
