@@ -62,6 +62,7 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	fclose(fileptr);
+	_free_double_pointer(arr_matrix);
 	free(buffer);
 	return (0);
 }
