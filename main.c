@@ -1,29 +1,5 @@
 #include "monty.h"
-
-/**
- * _free_double_pointer - Entry point
- * @d_pointer: double pointer
- * Return: void
- */
-void _free_double_pointer(char **d_pointer)
-{
-	unsigned int i = 0;
-
-	if (d_pointer == NULL)
-		return;
-
-	while (d_pointer[i])
-	{
-		free(d_pointer[i]);
-		++i;
-	}
-
-	if (d_pointer[i] == NULL)
-		free(d_pointer[i]);
-
-	free(d_pointer);
-}
-
+#include <stdio.h>
 /**
  * main - file
  * @argc: data
@@ -31,37 +7,37 @@ void _free_double_pointer(char **d_pointer)
  * Return: 0
  *
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
 	FILE *fileptr;
-	char *buffer;
-	long filelen;
-	char **arr_matrix;
+	char *buffer = NULL;
+	unsigned int line_numb = 0;
+	size_t len = 0;
+	stack_t *stack = NULL;
+	int i = 0;
 
 	if (argc != 2)
 	{
-		printf("error");
+		fprintf(stderr, "USAGE: monty file");
 		exit(EXIT_FAILURE);
 	}
 	fileptr = fopen(argv[1], "r");
-	fseek(fileptr, 0, SEEK_END);
-	filelen = ftell(fileptr);
-	rewind(fileptr);
-
-	buffer = (char *)malloc(filelen * sizeof(char));
-	if (buffer == NULL)
+	while (getline(&buffer, &len, fileptr) != -1)
 	{
-		return (-1);
+		line_numb += 1;
+		if (buffer == NULL)
+			break;
+		for (i = 0; buffer[i] != '\0'; ++i)
+        {
+            if (buffer[i] != ' ' && buffer[i] != '\t')
+                break;
+        }
+		mapcomand(buffer, line_numb, &stack);
+		/*free(buffer);*/
+		buffer = NULL;
 	}
-	fread(buffer, filelen, 1, fileptr);
-	printf("%s\n", buffer);
-	arr_matrix = add(buffer);
-	if (!arr_matrix)
-	{
-		printf("error");
-		exit(EXIT_FAILURE);
-	}
-	fclose(fileptr);
+	free_list(stack);
 	free(buffer);
+	fclose(fileptr);
 	return (0);
 }

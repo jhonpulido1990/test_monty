@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 /*include library*/
+#define  _GNU_SOURCE
+#define  _POSIX_C_SOURCE 200809L
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -8,6 +10,8 @@
 #include <stdint.h>
 #include <sys/types.h>
 #include <string.h>
+#define UNUSED(x) (void)(x)
+int number;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -36,12 +40,13 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-unsigned int count_token(char *line);
-char **add(char *line);
 void _free_double_pointer(char **d_pointer);
-int _strlen(char *s);
-int _strncmp(char *s1, char *s2, int n);
-char *str_concat(char *s1, char *s2);
-char *_strncpy(char *dest, char *src, int n);
-char *_strdup(char *str);
+void mapcomand(char *buffer, unsigned int line_numb, stack_t **stack);
+void push(stack_t **stack, unsigned int line_numb);
+void pall(stack_t **stack,unsigned int line_numb);
+void free_list(stack_t *stack);
+void pint(stack_t **stack,unsigned int line_numb);
+void pop(stack_t **stack,unsigned int line_numb);
+void mySwap(stack_t **stack, unsigned int ln);
+
 #endif /* MAIN_H */
