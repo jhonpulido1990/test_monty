@@ -3,9 +3,10 @@
  * @brief
  *
  */
-void mapcomand(char *buffer, unsigned int line_numb, stack_t **stack)
+void mapcomand(char *buffer, unsigned int line_numb, stack_t **stack, FILE *fileptr)
 {
-	instruction_t modulo[] = {{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {"swap", swap}, {"add", add}, {"nop", NULL}, {NULL, NULL}};
+	instruction_t modulo[] = {{"push", push}, {"pall", pall}, {"pint", pint},
+	{"pop", pop}, {"swap", swap}, {"add", add}, {"nop", NULL}, {NULL, NULL}};
 	char *instruction = NULL;
 	char *zero;
 	int i = 0;
@@ -20,6 +21,7 @@ void mapcomand(char *buffer, unsigned int line_numb, stack_t **stack)
 			fprintf(stderr, "L<%d>: usage: push integer\n", line_numb);
 			free(buffer);
 			free_list(*stack);
+			fclose(fileptr);
 			exit(EXIT_FAILURE);
 		}
 		if (zero[0] >= '0' && zero[0] <= '9')
@@ -32,6 +34,7 @@ void mapcomand(char *buffer, unsigned int line_numb, stack_t **stack)
 			fprintf(stderr, "L<%d>: usage: push integer\n", line_numb);
 			free(buffer);
 			free_list(*stack);
+			fclose(fileptr);
 			exit(EXIT_FAILURE);
 		}
 	}

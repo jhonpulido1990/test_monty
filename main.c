@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 			if (buffer[i] != ' ' && buffer[i] != '\t')
 				break;
 		}
-		mapcomand(buffer, line_numb, &stack);
+		mapcomand(buffer, line_numb, &stack, fileptr);
 		free(buffer);
 		buffer = NULL;
 	}

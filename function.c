@@ -6,6 +6,7 @@
 void push(stack_t **stack, unsigned int line_numb)
 {
 	stack_t *new_node = NULL;
+
 	UNUSED(line_numb);
 
 	new_node = malloc(sizeof(stack_t));
