@@ -88,7 +88,7 @@ void pop(stack_t **stack,unsigned int line_numb)
  * @brief 
  * 
  */
-void mySwap(stack_t **stack, unsigned int ln)
+void mySwap(stack_t **stack, unsigned int line_numb)
 {
 	int i, num;
 	stack_t *tmp;
@@ -102,7 +102,7 @@ void mySwap(stack_t **stack, unsigned int ln)
 	}
 	if (i < 2)
 	{
-		printf("L%u: can't swap, stack too short\n", ln);
+		printf("L%u: can't swap, stack too short\n", line_numb);
 		exit(EXIT_FAILURE);
 	}
 	num = (*stack)->n;
