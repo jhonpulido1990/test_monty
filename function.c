@@ -88,7 +88,7 @@ void pop(stack_t **stack,unsigned int line_numb)
  * @brief 
  * 
  */
-void mySwap(stack_t **stack, unsigned int line_numb)
+void swap(stack_t **stack, unsigned int line_numb)
 {
 	int i, num;
 	stack_t *tmp;

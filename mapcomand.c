@@ -5,7 +5,7 @@
  */
 void mapcomand(char *buffer, unsigned int line_numb, stack_t **stack)
 {
-    instruction_t modulo[] = {{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {NULL, NULL}};
+    instruction_t modulo[] = {{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {"swap", swap}, {NULL, NULL}};
     char *instruction = NULL;
     char *zero;
     int i = 0;
