@@ -1,22 +1,27 @@
 #include "monty.h"
-/**
- * print_matrix - print matrix
- * @matrix: the matrix.
- *
- * Return: void.
- */
-void print_matrix(char **matrix)
-{
-	int i, j, m, n;
 
-	for (i = 0; i < m; i++)
+/**
+ * _free_double_pointer - Entry point
+ * @d_pointer: double pointer
+ * Return: void
+ */
+void _free_double_pointer(char **d_pointer)
+{
+	unsigned int i = 0;
+
+	if (d_pointer == NULL)
+		return;
+
+	while (d_pointer[i])
 	{
-		for (j = 0; j < n; j++)
-		{
-			printf("%d\t", matrix[i][j]);
-		}
-		printf("\n");
+		free(d_pointer[i]);
+		++i;
 	}
+
+	if (d_pointer[i] == NULL)
+		free(d_pointer[i]);
+
+	free(d_pointer);
 }
 
 /**
@@ -51,7 +56,11 @@ int main(int argc, char **argv)
 	fread(buffer, filelen, 1, fileptr);
 	printf("%s\n", buffer);
 	arr_matrix = add(buffer);
-
+	if (!arr_matrix)
+	{
+		printf("error");
+		exit(EXIT_FAILURE);
+	}
 	fclose(fileptr);
 	free(buffer);
 	return (0);

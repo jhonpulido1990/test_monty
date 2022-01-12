@@ -38,5 +38,10 @@ typedef struct instruction_s
 } instruction_t;
 unsigned int count_token(char *line);
 char **add(char *line);
-
+void _free_double_pointer(char **d_pointer);
+int _strlen(char *s);
+int _strncmp(char *s1, char *s2, int n);
+char *str_concat(char *s1, char *s2);
+char *_strncpy(char *dest, char *src, int n);
+char *_strdup(char *str);
 #endif /* MAIN_H */

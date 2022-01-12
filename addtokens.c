@@ -24,14 +24,14 @@ unsigned int count_token(char *line)
 /**
  * add - separate line in tokens and add to the matrix.
  * @line: command line
- * Return: matrix.
+ * Return: matirx.
  */
 char **add(char *line)
 {
 	char **command, *tok;
 	unsigned int len, i;
 
-	line[strlen(line) - 1] = '\0';
+	line[_strlen(line) - 1] = '\0';
 	len = count_token(line);
 	if (len == 0)
 		return ('\0');
@@ -44,13 +44,14 @@ char **add(char *line)
 	tok = strtok(line, " \t\n\r");
 	while (tok != NULL)
 	{
-		command[i] = malloc(strlen(tok) + 1);
+		command[i] = malloc(_strlen(tok) + 1);
 		if (command[i] == NULL)
 		{
-			/*_free_double_pointer(command);*/
+			_free_double_pointer(command);
 			return ('\0');
 		}
-		strncpy(command[i], tok, strlen(tok) + 1);
+		_strncpy(command[i], tok, _strlen(tok) + 1);
+		printf("Command[i] : %s\ntok : %s\n", command[i], tok);
 		tok = strtok(NULL, " \t\n\r");
 		++i;
 	}
