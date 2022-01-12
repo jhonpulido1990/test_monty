@@ -36,6 +36,7 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
+unsigned int count_token(char *line);
+char **add(char *line);
 
 #endif /* MAIN_H */
