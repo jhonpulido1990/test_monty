@@ -1,45 +1,45 @@
 #include "monty.h"
 /**
- * @brief 
- * 
+ * @brief
+ *
  */
 void push(stack_t **stack, unsigned int line_numb)
 {
-    stack_t *new_node = NULL;
-    UNUSED (line_numb);
+	stack_t *new_node = NULL;
+	UNUSED(line_numb);
 
-    new_node = malloc(sizeof(stack_t));
-    if (new_node == NULL)
-    {
-        printf("Error: malloc failed\n");
-        exit(EXIT_FAILURE);
-    }
-    if (*stack == NULL)
-    {
-        new_node->n = number;
-        *stack = new_node;
-        (*stack)->prev = NULL;
-        new_node->next = NULL;
-    }
-    else
-    {
-        new_node->n = number;
-        (*stack)->prev = new_node;
-        new_node->next = *stack;
-        new_node->prev = NULL;
-        *stack = new_node;
-    }
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
+	{
+		printf("Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	if (*stack == NULL)
+	{
+		new_node->n = number;
+		*stack = new_node;
+		(*stack)->prev = NULL;
+		new_node->next = NULL;
+	}
+	else
+	{
+		new_node->n = number;
+		(*stack)->prev = new_node;
+		new_node->next = *stack;
+		new_node->prev = NULL;
+		*stack = new_node;
+	}
 }
 /**
- * @brief 
- * 
- * @param h 
- * @return size_t 
+ * @brief
+ *
+ * @param h
+ * @return size_t
  */
-void pall(stack_t **stack,unsigned int line_numb)
+void pall(stack_t **stack, unsigned int line_numb)
 {
-    stack_t *h;
-	(void) line_numb;
+	stack_t *h;
+	(void)line_numb;
 
 	h = *stack;
 	while (h != NULL)
@@ -49,16 +49,16 @@ void pall(stack_t **stack,unsigned int line_numb)
 	}
 }
 /**
- * @brief 
- * 
- * @param h 
- * @return size_t 
+ * @brief
+ *
+ * @param h
+ * @return size_t
  */
-void pint(stack_t **stack,unsigned int line_numb)
+void pint(stack_t **stack, unsigned int line_numb)
 {
-    UNUSED (line_numb);
+	UNUSED(line_numb);
 
-    if (*stack == NULL)
+	if (*stack == NULL)
 	{
 		printf("L%u: can't pint, stack empty\n", line_numb);
 		exit(EXIT_FAILURE);
@@ -66,12 +66,12 @@ void pint(stack_t **stack,unsigned int line_numb)
 	printf("%i\n", (*stack)->n);
 }
 /**
- * @brief 
- * 
- * @param stack 
- * @param line_numb 
+ * @brief
+ *
+ * @param stack
+ * @param line_numb
  */
-void pop(stack_t **stack,unsigned int line_numb)
+void pop(stack_t **stack, unsigned int line_numb)
 {
 	stack_t *tmp;
 
@@ -85,8 +85,8 @@ void pop(stack_t **stack,unsigned int line_numb)
 	free(tmp);
 }
 /**
- * @brief 
- * 
+ * @brief
+ *
  */
 void swap(stack_t **stack, unsigned int line_numb)
 {

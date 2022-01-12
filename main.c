@@ -28,12 +28,12 @@ int main(int argc, char *argv[])
 		if (buffer == NULL)
 			break;
 		for (i = 0; buffer[i] != '\0'; ++i)
-        {
-            if (buffer[i] != ' ' && buffer[i] != '\t')
-                break;
-        }
+		{
+			if (buffer[i] != ' ' && buffer[i] != '\t')
+				break;
+		}
 		mapcomand(buffer, line_numb, &stack);
-		/*free(buffer);*/
+		free(buffer);
 		buffer = NULL;
 	}
 	free_list(stack);

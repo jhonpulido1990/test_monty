@@ -1,8 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 /*include library*/
-#define  _GNU_SOURCE
-#define  _POSIX_C_SOURCE 200809L
+#define _GNU_SOURCE
+#define _POSIX_C_SOURCE 200809L
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -43,10 +43,11 @@ typedef struct instruction_s
 void _free_double_pointer(char **d_pointer);
 void mapcomand(char *buffer, unsigned int line_numb, stack_t **stack);
 void push(stack_t **stack, unsigned int line_numb);
-void pall(stack_t **stack,unsigned int line_numb);
+void pall(stack_t **stack, unsigned int line_numb);
 void free_list(stack_t *stack);
-void pint(stack_t **stack,unsigned int line_numb);
-void pop(stack_t **stack,unsigned int line_numb);
-void mySwap(stack_t **stack, unsigned int ln);
+void pint(stack_t **stack, unsigned int line_numb);
+void pop(stack_t **stack, unsigned int line_numb);
+void swap(stack_t **stack, unsigned int ln);
+void add(stack_t **stack, unsigned int line_numb);
 
 #endif /* MAIN_H */
